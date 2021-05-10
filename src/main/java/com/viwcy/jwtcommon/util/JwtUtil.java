@@ -1,4 +1,4 @@
-package com.fuqiang.jwtcommon.util;
+package com.viwcy.jwtcommon.util;
 
 import com.alibaba.fastjson.JSONObject;
 import io.jsonwebtoken.Claims;

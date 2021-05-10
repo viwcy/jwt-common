@@ -1,4 +1,4 @@
-package com.fuqiang.jwtcommon.constant;
+package com.viwcy.jwtcommon.constant;
 
 /**
  * TODO //

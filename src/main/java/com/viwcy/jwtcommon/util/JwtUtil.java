@@ -52,7 +52,7 @@ public class JwtUtil {
     /**
      * 签名秘钥
      */
-    private static final String JWT_SECRET = "fuqiangwcy0203";
+    private static final String JWT_SECRET = "viwcy4611";
 
     @Autowired
     private HttpServletRequest request;

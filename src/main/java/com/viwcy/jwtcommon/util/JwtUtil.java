@@ -70,9 +70,11 @@ public class JwtUtil {
         Date now = new Date();
         Date expireDate = new Date(now.getTime() + jwtExpire * 60 * 1000L);
         String jwt = Jwts.builder()
-                .claim("id", map.get("id"))
-                .claim("phone", map.get("phone"))
-                .claim("email", map.get("email"))
+                .claim("userInfo", map)
+//                .claim("id", map.get("id"))
+//                .claim("nickname", map.get("nickname"))
+//                .claim("phone", map.get("phone"))
+//                .claim("email", map.get("email"))
                 .setHeaderParam("typ", JWT_HEADER_TYPE)//类型
                 .setSubject(subject)//代表这个JWT的主体，相当于唯一标识
                 .setIssuedAt(now)//是一个时间戳，代表这个JWT的签发时间
@@ -110,6 +112,16 @@ public class JwtUtil {
     public String getUserId() {
         String jwt = request.getHeader("Authorization");
         return StringUtils.isBlank(jwt) ? null : this.parsingJwt(jwt).getSubject();
+    }
+
+    public Map<String, Object> getUserInfo() {
+        String jwt = request.getHeader("Authorization");
+        try {
+            return this.parsingJwt(jwt).get("userInfo", Map.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }
